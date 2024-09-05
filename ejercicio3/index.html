@@ -4,8 +4,67 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
-    <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="stylesheet" href="assets/styles.css" />
     <title>Generador de tarjetas de presentación</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <h1>Generador de tarjetas de presentación</h1>
+      <div class="buttons">
+        <button type="button" id="print-card">Imprimir tarjeta</button>
+        <button type="button" id="reset-form">Reiniciar formulario</button>
+      </div>
+    </header>
+    <main>
+      <section id="input-section">
+        <form id="input-form">
+          <h2>Información personal</h2>
+          <div>
+            <label for="name">Nombre de la persona</label>
+            <input type="text" id="name" name="name" />
+          </div>
+          <div>
+            <label for="company">Nombre de la empresa</label>
+            <input type="text" id="company" name="company" />
+          </div>
+          <div>
+            <label for="position">Cargo o puesto</label>
+            <input type="text" id="position" name="position" />
+          </div>
+          <h2>Información de contacto</h2>
+          <div>
+            <label for="phone">Teléfono</label>
+            <input type="text" id="phone" name="phone" />
+          </div>
+          <div>
+            <label for="phone">Email</label>
+            <input type="email" id="email" name="email" />
+          </div>
+        </form>
+      </section>
+      <section id="card-section">
+        <div id="card">
+          <div class="content">
+            <p id="card-name">Keanu Reeves</p>
+            <p id="card-job">
+              <span id="card-company">Marvel Studios</span>
+              —
+              <span id="card-position">Actor de reparto</span>
+            </p>
+            <p id="card-contact">
+              <img src="assets/img/phone-icon.svg" alt="Icono de teléfono" />
+              <span id="card-phone"></span>
+              <img src="assets/img/email-icon.svg" alt="Icono de email" />
+              <span id="card-email"></span>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      Desarrollado por&nbsp;<a href="https://nanndo54.dev">nanndo54</a>
+    </footer>
+  </body>
+  <script src="assets/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </html>
