@@ -11,8 +11,8 @@
     <header>
       <h1>Generador de tarjetas de presentación</h1>
       <div class="buttons">
-        <button type="button" id="print-card">Imprimir tarjeta</button>
-        <button type="button" id="reset-form">Reiniciar formulario</button>
+        <button type="button" id="print-card">Descargar tarjeta</button>
+        <button type="button" id="reset-form">Reiniciar tarjeta</button>
       </div>
     </header>
     <main>
@@ -21,36 +21,68 @@
           <h2>Información personal</h2>
           <div>
             <label for="name">Nombre de la persona</label>
-            <input type="text" id="name" name="name" />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Keanu Reeves"
+            />
           </div>
           <div>
             <label for="company">Nombre de la empresa</label>
-            <input type="text" id="company" name="company" />
+            <input
+              type="text"
+              id="company"
+              name="company"
+              placeholder="Marvel Studios"
+            />
           </div>
           <div>
             <label for="position">Cargo o puesto</label>
-            <input type="text" id="position" name="position" />
+            <input
+              type="text"
+              id="position"
+              name="position"
+              placeholder="Actor de reparto"
+            />
           </div>
           <h2>Información de contacto</h2>
           <div>
             <label for="phone">Teléfono</label>
-            <input type="text" id="phone" name="phone" />
+            <input type="text" id="phone" name="phone" placeholder="Opcional" />
           </div>
           <div>
-            <label for="phone">Email</label>
-            <input type="email" id="email" name="email" />
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Opcional"
+            />
+          </div>
+          <h2>Extra</h2>
+          <div>
+            <label for="logo">Logotipo</label>
+            <input type="file" id="logo" name="logo" accept="image/*" />
           </div>
         </form>
       </section>
       <section id="card-section">
         <div id="card">
           <div class="content">
-            <p id="card-name">Keanu Reeves</p>
-            <p id="card-job">
-              <span id="card-company">Marvel Studios</span>
-              —
-              <span id="card-position">Actor de reparto</span>
-            </p>
+            <img
+              id="card-logo"
+              alt="Logotipo de la empresa"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEo0lEQVR4nO2dW4hVZRTHf6lzPFOBBfZSakkEFd0gIowogm4PogZFKhnoQw8lxAQ9VGRSkBFaRBI9RDcUhC7azcY5WIpRIZNdoCBG7aoTREGJWVl9sWAdOAxz5uy9Z/ZlfXv94P82Z3/f2f+zvvu3BhzHcRzHcRzHcRzHcRzHcRynbpwELAWeAV4HXgLuBuaWXbE6citwGAjj6C9gPdAou5J14V7gvy5mdOo9YGbZlY2d64B/E5jRljRnTo58lsIM0T/AuXlWqM5clNKMth4uu+KxsjKjIYPUgBOA84HbgSeBN4BPgAPAz8CvwHfA58AOYCNwF3ApMD1jmQMZDRkmUqYDC4HngNGML0f0G/CqDl1lLpGUFRnL205kzAbWAj9OwoRu+h14Cjg7QT3mZyzjASLhVGAdcCQHI8ZKhrLPA2f0qNOulM+VSeJZRMBy4KcCjBiro8B9wIwu9ZI+6M8Uz3uECKJiWwlGhDH6CJjXpY5L9Zff6xlbJjGAqATy6/umAmYE7YgnWvZYoKOn8T77iy4yykjQLNfo6CdUQINAM0Gd5YVfpmtbTwAPAUuAEzHOTQmbgFBQZCQxI1okMo4Zi4xoubBCzdS7dTfjZOArg5HRrxPE6HjZYGT0Ay1gH9BHRNxQASOCLjqmNaP92QeJhH5dkbUYGaFDxyaYOJpiwHhkhA7JKRPTyEs4FIkZQRckz8EwdxhvpsI4ehrDDEcSGaFDR3QIb46LDc0zWimfvwyDrCkxMvoT1lH+bihDGVsxyMcRRkboaLa6bWhVElmOPl7xyGhNsjzZyzHDlRE2U2GMVmOIOws2o5mwXrIj+PYUlWtq+Pt4xJERVPIsM2yOODKC6gsM8U6FImNmDmYEPbZqhp05mjGUspnakVM95KSJGXZFHBlBJYf6zPBmxJERVN9T4+3aoQpFRltyFcIMj0ZuRrC2nrWyBDOaBTRTnZJLQ2a4POLICKrbMESfHvMvKjIGCzZDdB7G2FlQZLxVghmHLJ50vydSMwLwLAaZkzAdhaVmKqhuxCjvJ/yCrRRmNEqMDNEPlm9JLUnwBXenuKrc1KM9oUTJWQGzyC9pJJLICLqXfhrGWTYFkdGogBnR5DCR4eGHEZgxCpxCJMgJjb+NNlNBdTORsdZgBx5UkiclOvqMRsZ+YBY1plmhyJBENZdQYxoVigy5R389NY+M7RUwon19TSa1ppHzvIs03cQGvSR5bcJlhkZO+/Ah4+RPMpGanmes1jR7433Bg8DiHqu2VYmMLzWNoFmmpTjQsGYCQ9ZpetVQol5Mmf6vsnOLqbp5tAD4tAQjRmLpvOdlSCIz2iOV0TTNOlpEDq3DmuMqmnwn92d8EZKdrRczgFuAPSk3uZJor94OTjpJNUPWjljy6abhTE0YJsdT/8hQ3nG9XieZQi8gYvaVsC7U0L5mFfAYsEknkq0ObdH7KXJp6IoYsr0l5YOMhphPT1FVNmY0RE6jODlwVcb2XPoEJyfSnqX1f3aSM6cD3yY0Y9hqjhBrzNX5wkRmvFb3TZ4yFhhlAfEVjRj5Xx5fAy8AVxdeG8dxHMdxHMdxHMdxHMdxHMehTP4HhUCd2yuXc9IAAAAASUVORK5CYII="
+            />
+            <div id="card-text">
+              <p id="card-name">Keanu Reeves</p>
+              <p id="card-job">
+                <span id="card-company">Marvel Studios</span>
+                —
+                <span id="card-position">Actor de reparto</span>
+              </p>
+            </div>
             <p id="card-contact">
               <img src="assets/img/phone-icon.svg" alt="Icono de teléfono" />
               <span id="card-phone"></span>
@@ -66,5 +98,16 @@
     </footer>
   </body>
   <script src="assets/index.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js"
+    integrity="sha512-WiGQZv8WpmQVRUFXZywo7pHIO0G/o3RyiAJZj8YXNN4AV7ReR1RYWVmZJ6y3H06blPcjJmG/sBpOVZjTSFFlzQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"
+    integrity="sha512-7tWCgq9tTYS/QkGVyKrtLpqAoMV9XIUxoou+sPUypsaZx56cYR/qio84fPK9EvJJtKvJEwt7vkn6je5UVzGevw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
 </html>

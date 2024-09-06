@@ -8,6 +8,7 @@ const companyDisplayElement = $('#card-company')
 const positionDisplayElement = $('#card-position')
 const phoneDisplayElement = $('#card-phone')
 const emailDisplayElement = $('#card-email')
+const logoDisplayElement = $('#card-logo')
 
 const resetFormButton = $('#reset-form')
 const printCardButton = $('#print-card')
@@ -35,6 +36,11 @@ const cardData = [
   {
     id: 'email',
     displayElement: emailDisplayElement
+  },
+  {
+    id: 'logo',
+    displayElement: logoDisplayElement,
+    type: 'image'
   }
 ]
 
@@ -43,11 +49,22 @@ formElement.addEventListener('input', (event) => {
   const id = target.id
 
   const data = cardData.find((data) => data.id === id)
-  const { displayElement, defaultValue } = data
+  const { displayElement, defaultValue, type = 'text' } = data
 
-  const value = target.value || defaultValue || ''
+  if (type === 'image') {
+    const file = target.files[0]
+    const reader = new FileReader()
 
-  displayElement.textContent = value
+    reader.onload = (event) => {
+      displayElement.src = event.target.result
+    }
+
+    reader.readAsDataURL(file)
+    return
+  } else if (type === 'text') {
+    const value = target.value || defaultValue || ''
+    displayElement.textContent = value
+  }
 })
 
 resetFormButton.addEventListener('click', () => {
@@ -57,19 +74,7 @@ resetFormButton.addEventListener('click', () => {
 })
 
 printCardButton.addEventListener('click', () => {
-  html2canvas(cardElement, {
-    allowTaint: true,
-    foreignObjectRendering: true,
-    useCors: true
-  }).then((canvas) => {
-    const imageData = canvas.toDataURL('image/png')
-
-    const link = document.createElement('a')
-    link.href = imageData
-    link.download = 'image.png'
-    document.body.appendChild(link)
-    link.click()
-
-    document.body.removeChild(link)
+  htmlToImage.toPng(cardElement).then((dataUrl) => {
+    download(dataUrl, 'tarjeta de presentación.png')
   })
 })

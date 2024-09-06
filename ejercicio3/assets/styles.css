@@ -14,27 +14,61 @@ body {
   background-color: #13181b;
   color: #e8ebf3;
   font-family: 'Montserrat', sans-serif;
-
   font-size: 16px;
 
+  min-height: 100vh;
+  padding-bottom: 5em;
+
+  position: relative;
   display: flex;
   flex-direction: column;
 }
 
+h1 {
+  font-weight: 500;
+}
+
 h2 {
-  font-size: 1.35em;
+  color: #eb6058;
+  font-size: 1.25em;
+  font-weight: 400;
+}
+
+label {
+  font-size: 0.95em;
 }
 
 button {
+  background-color: #eb6058;
+  color: white;
+  font-family: inherit;
+  border: none;
+
+  border-radius: 0.25em;
+  padding: 0.5em 0.75em;
+
   cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.1);
+}
+
+button:active {
+  filter: brightness(0.9);
+}
+
+button#reset-form {
+  background-color: #4786af;
 }
 
 input {
   font-family: inherit;
 
   padding: 0.25em;
-  border-radius: 0.125em;
+  border-radius: 0.25em;
   border: 0.125em solid #2c3b45;
+  width: 17.5em;
 }
 
 header {
@@ -51,22 +85,12 @@ header {
   gap: 1em;
 }
 
-.buttons button {
-  background-color: #eb6058;
-  color: white;
-  font-family: inherit;
-  border: none;
-
-  border-radius: 0.125em;
-  padding: 0.5em 0.75em;
-}
-
 main {
   background-color: #1d2730;
   margin: 2em;
   margin-top: 3em;
   padding: 1em;
-  border-radius: 0.125em;
+  border-radius: 0.25em;
 
   display: flex;
   justify-content: space-between;
@@ -75,22 +99,28 @@ main {
 
 section {
   height: 100%;
-  border-radius: 1em;
 }
 
 #input-section {
-  width: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-right: 0.2em solid #13181b6c;
+  padding-right: 1.5em;
 }
 
 #card-section {
   margin: auto;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #input-form {
+  width: 30em;
+
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -109,9 +139,10 @@ section {
 
   font-family: 'Pridi', serif;
 
+  font-size: 1.5em;
   padding: 0.5em;
   width: 21em;
-  height: 12em;
+  aspect-ratio: 7/4;
   border-radius: 0.75em;
 }
 
@@ -124,15 +155,9 @@ section {
   border-radius: 0.375em;
 
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-#card p {
-  display: flex;
-  gap: 0.25rem;
-  align-items: center;
+  gap: 1.25em;
 }
 
 #card-contact img {
@@ -141,13 +166,20 @@ section {
   margin-left: 0.25em;
 }
 
+#card-logo {
+  text-align: center;
+  width: 2.125em;
+}
+
 #card-name {
   font-family: 'Rouge Script', cursive;
   font-size: 2.5em;
+  text-align: center;
 }
 
 #card-job {
-  font-size: 0.25em;
+  font-size: 0.5em;
+  text-align: center;
 }
 
 #card-contact {
@@ -181,14 +213,47 @@ body > footer > a {
   font-weight: 700;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
+  #card {
+    font-size: 1.15em;
+  }
+}
+
+@media (max-width: 992px) {
   main {
     flex-direction: column;
+    padding: 2.5em 1em;
+  }
+
+  #input-section {
+    border-right: none;
+    padding-right: 0;
+    margin: auto;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  #input-form {
+    width: 100%;
+  }
+
+  #input-form > div {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  input {
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   header {
     flex-direction: column;
+  }
+
+  #card {
+    font-size: 0.9em;
   }
 }
